@@ -16,6 +16,7 @@ public class User {
         this.password = password;
         this.rol = rol;
         historial = new ActionHistorial[10];
+        this.id++;
     }
 
     public String getName() {
@@ -42,10 +43,6 @@ public class User {
         this.username = username;
     }
 
-    public int getRegisteredActions() {
-        return registeredActions;
-    }
-
     public void setAction(String description){
         if (registeredActions<historial.length) {
             historial[registeredActions++] = new ActionHistorial(description);
@@ -64,6 +61,10 @@ public class User {
             return true;
         }
         return false;
+    }
+
+    public boolean checkPassword(String pw){
+        return this.password.equals(pw);
     }
 
 }
